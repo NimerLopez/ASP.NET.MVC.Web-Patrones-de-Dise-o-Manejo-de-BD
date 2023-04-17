@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Proyecto.ISW712.PatronesDiseño.props" />
+</Project>
