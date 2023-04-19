@@ -9,16 +9,16 @@
 
         private Singleton()
         {
-            bd_actual = "db2";
+            bd_actual = "db1";
             motores_bd = new Dictionary<string, string>();
             cadenas_conexion = new Dictionary<string, string>();
 
-            motores_bd.Add("db1", "motor_por_defecto_1");
-            cadenas_conexion.Add("db1", "cadena_por_defecto_1");
-            motores_bd.Add("db2", "motor_por_defecto_2");
-            cadenas_conexion.Add("db2", "cadena_por_defecto_2");
-            motores_bd.Add("db3", "motor_por_defecto_3");
-            cadenas_conexion.Add("db3", "cadena_por_defecto_3");
+            motores_bd.Add("db1", "MSSql");
+            cadenas_conexion.Add("db1", "conexionMSSql");
+            motores_bd.Add("db2", "PgSql");
+            cadenas_conexion.Add("db2", "conexionPgSql");
+            motores_bd.Add("db3", "MySql");
+            cadenas_conexion.Add("db3", "conexionMySql");
         }
 
         public Dictionary<string, string> Motores_bd { get => motores_bd; set => motores_bd = value; }

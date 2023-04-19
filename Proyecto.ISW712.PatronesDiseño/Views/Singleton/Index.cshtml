@@ -1,11 +1,42 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-<form method="post" asp-controller="Singleton" asp-action="CambiarBD">
-    <p>La cadena de conexión es: @ViewData["CadenaConexion"]</p>
-    <p>El motor de base de datos es: @ViewData["MotorBD"]</p>
-    <button type="submit" name="bd" value="db1">Base de datos 1</button>
-    <button type="submit" name="bd" value="db2">Base de datos 2</button>
-    <button type="submit" name="bd" value="db3">Base de datos 3</button>
-</form>
+<div>
 
+<form method="post" asp-controller="Singleton" asp-action="CambiarBD">
+    <p>El motor de base de datos es: @ViewData["MotorBD"]</p>
+    <p>La cadena de conexión es: @ViewData["CadenaConexion"]</p>
+        <button type="submit" name="bd" value="db1">Microsoft SQL Server</button>
+        <button type="submit" name="bd" value="db2">Postgre SQL </button>
+        <button type="submit" name="bd" value="db3">MySQL</button>
+</form>
+<br />
+<br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cadena de Conexion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>conexionMSSql</td>
+                <td>@ViewData["cadena1"]</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>conexionPgSql</td>
+                <td>@ViewData["cadena2"]</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>conexionMySql</td>
+                <td>@ViewData["cadena3"]</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
