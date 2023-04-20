@@ -30,6 +30,9 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaConexion
                 case "PgSql":
                     conexion = new PostgresConexion(_motor, _cadenaConexion).Conectar();
                     break;
+                case "MySql":
+                    conexion = new MySqlConexion(_motor, _cadenaConexion).Conectar();
+                    break;
                 default:
                     throw new NotSupportedException(string.Format("El motor de base de datos '{0}' no es soportado.", _motor));
             }

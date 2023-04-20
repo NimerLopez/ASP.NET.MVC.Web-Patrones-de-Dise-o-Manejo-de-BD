@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proyecto.ISW712.PatronesDiseño.Data.FabricaConexion;
+using Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario;
+using System.Data.SqlClient;
 
 namespace Proyecto.ISW712.PatronesDiseño.Controllers
 {
@@ -19,14 +21,15 @@ namespace Proyecto.ISW712.PatronesDiseño.Controllers
             //Console.WriteLine(cone);
             //Console.WriteLine(cone.GetType().GetProperty("ServerVersion").GetValue(cone));
             cone.Open();
-            Console.WriteLine("La Conexion es:");
-            Console.WriteLine(cone.GetType().GetProperty("ServerVersion").GetValue(cone));
-            cone.Close();
+            var usuarioFactory =new  FabricaUsuario("MSSql", (SqlConnection)cone, "get").EjecutarCrud().ObtenerTodosLosUsuarios();
+            Console.WriteLine("//////////");
+            Console.WriteLine(usuarioFactory[0].Nombre_Usuario);
+            Console.WriteLine("//////////");
+           // Console.WriteLine(cone.GetType().GetProperty("ServerVersion").GetValue(cone));
+           // cone.Close();
 
 
             Console.WriteLine(_configuration["ConnectionStrings:" + singleton.Bd_actual]);
-
-
 
             return View();
         }
