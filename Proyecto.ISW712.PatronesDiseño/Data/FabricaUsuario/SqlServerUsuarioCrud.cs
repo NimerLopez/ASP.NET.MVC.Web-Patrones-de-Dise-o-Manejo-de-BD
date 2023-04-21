@@ -1,24 +1,30 @@
 ﻿using MySql.Data.MySqlClient;
 using Proyecto.ISW712.PatronesDiseño.Data.FabricaConexion;
 using Proyecto.ISW712.PatronesDiseño.Models;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
 {
     public class SqlServerUsuarioCrud:IUsuarioCruds
     {
-        public SqlConnection conexion;
+        public IDbConnection conexion;
 
 
 
-        public SqlServerUsuarioCrud(SqlConnection conexion)
+        public SqlServerUsuarioCrud(IDbConnection conexion)
         {
             this.conexion = conexion;
         }
 
         public  void CrearUsuario(UsuarioModel usuario)
         {
-            // Implementación específica de MySQL para crear un usuario
+            SqlCommand cmd = new SqlCommand("INSERT INTO Usuarios (Nombre_Usuario, Nombre_Completo, Edad, Correo) VALUES (@Nombre_Usuario, @Nombre_Completo, @Edad, @Correo)", (SqlConnection)conexion);
+            cmd.Parameters.AddWithValue("@Nombre_Usuario", usuario.Nombre_Usuario);
+            cmd.Parameters.AddWithValue("@Nombre_Completo", usuario.Nombre_Completo);
+            cmd.Parameters.AddWithValue("@Edad", usuario.Edad);
+            cmd.Parameters.AddWithValue("@Correo", usuario.Correo);
+            cmd.ExecuteNonQuery();
         }
 
         public  void ActualizarUsuario(int id)
@@ -28,7 +34,10 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
 
         public  void EliminarUsuario(int id)
         {
-            // Implementación específica de MySQL para eliminar un usuario
+            Console.WriteLine(id);
+            SqlCommand cmd = new SqlCommand("DELETE FROM Usuarios WHERE User_id = @id", (SqlConnection)conexion);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
         }
 
 
@@ -36,7 +45,7 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
         {
             List<UsuarioModel> Usuarios = new List<UsuarioModel>();
             
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Usuarios", conexion);
+            SqlCommand cmd = new SqlCommand("exec GetUsuarios", (SqlConnection)conexion);
             cmd.CommandType = System.Data.CommandType.Text;
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -50,9 +59,9 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
                     Correo = reader["Correo"].ToString(),
                 });
             }
-            conexion.Close();
-            Console.WriteLine("Usuarios");
-            Console.WriteLine(Usuarios[0].Nombre_Usuario);
+            //conexion.Close();
+            //Console.WriteLine("Usuarios");
+            //Console.WriteLine(Usuarios[0].Nombre_Usuario);
             return Usuarios;
         }
 

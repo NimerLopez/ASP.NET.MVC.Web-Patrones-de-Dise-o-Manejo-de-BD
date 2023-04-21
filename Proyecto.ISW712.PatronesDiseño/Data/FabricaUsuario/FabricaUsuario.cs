@@ -8,29 +8,24 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
     public class FabricaUsuario
     {
         private string _motor;
-        public SqlConnection _Conexion;
+        public IDbConnection _Conexion;
         public string operacion;
 
 
-        public FabricaUsuario(string motor, SqlConnection Conexion, string accion)
+        public FabricaUsuario(string motor, IDbConnection Conexion)
         {
             this._motor = motor;
             this._Conexion = Conexion;
             Console.WriteLine(this._motor);
-            this.operacion = accion;
         }
         public IUsuarioCruds EjecutarCrud()
         {
             switch (_motor)
             {
-                case "MSSql":
-                    if (operacion == "get")
-                    {
-                        return new SqlServerUsuarioCrud(_Conexion);
-                    }
+                case "MSSql":                 
+                        return new SqlServerUsuarioCrud(_Conexion);                   
                     //conexion = new SqlServerConexion(_motor, _cadenaConexion).Conectar();
                     //Console.WriteLine(conexion.ToString());
-                    break;
                 case "PgSql":
                     //conexion = new PostgresConexion(_motor, _cadenaConexion).Conectar();
                     break;
