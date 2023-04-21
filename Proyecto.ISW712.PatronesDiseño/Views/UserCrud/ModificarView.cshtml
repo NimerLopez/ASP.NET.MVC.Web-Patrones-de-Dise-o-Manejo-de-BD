@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model UsuarioModel
+
+<h2>Modificar Usuario[@ViewData["cadena1"]]</h2>
+
+<form method="post" asp-action="Modificar">
+    <div class="form-group">
+        <label for="nombreUsuario">Nombre de usuario:</label>
+        <input type="text" class="form-control" id="nombreUsuario" name="Nombre_Usuario" value="@Model.Nombre_Usuario">
+    </div>
+    <div class="form-group">
+        <label for="nombreCompleto">Nombre completo:</label>
+        <input type="text" class="form-control" id="nombreCompleto" name="Nombre_Completo" value="@Model.Nombre_Completo">
+    </div>
+    <div class="form-group">
+        <label for="edad">Edad:</label>
+        <input type="number" class="form-control" id="edad" name="Edad" value="@Model.Edad">
+    </div>
+    <div class="form-group">
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" class="form-control" id="correo" name="Correo" value="@Model.Correo">
+    </div>
+    <input type="hidden" name="User_id" value="@Model.User_id">
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+
+</form>

@@ -5,8 +5,9 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
     public interface IUsuarioCruds
     {
         void CrearUsuario(UsuarioModel usuario);
-        void ActualizarUsuario(int id);
+        //void ActualizarUsuario(int id);
         void EliminarUsuario(int id);
         List<UsuarioModel> ObtenerTodosLosUsuarios();
+        void ActualizarUsuario(UsuarioModel usuario);
     }
 }

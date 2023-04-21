@@ -44,19 +44,21 @@ namespace Proyecto.ISW712.PatronesDiseño.Helpers
             deliteUsu.EliminarUsuario(id);
             CerrarConexion();
         }
-        public void AgregarUsuario()
+        public void AgregarUsuario(UsuarioModel usu)
         {
-            var nuevoUsuario = new UsuarioModel
-            {
-                Edad = 25,
-                Nombre_Usuario = "juan123",
-                Nombre_Completo = "Juan Pérez",
-                Correo = "juan.perez@example.com"
-            };
             ObtenerConexion();
             FabricaUsuario usuarioFactory = new FabricaUsuario(this.motor, this.conexion);
             IUsuarioCruds addUsu = usuarioFactory.EjecutarCrud();
-            addUsu.CrearUsuario(nuevoUsuario);
+            addUsu.CrearUsuario(usu);
+        }
+        public void ModificarUsuario(UsuarioModel usuario)
+        {
+            ObtenerConexion();
+            FabricaUsuario usuarioFactory = new FabricaUsuario(motor, conexion);
+            IUsuarioCruds modificarUsu = usuarioFactory.EjecutarCrud();
+            modificarUsu.ActualizarUsuario(usuario);
+            //dificarUsu.ModificarUsuario(usuario);
+            CerrarConexion();
         }
 
 

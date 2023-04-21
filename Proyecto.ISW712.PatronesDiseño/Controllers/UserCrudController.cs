@@ -2,6 +2,7 @@
 using Proyecto.ISW712.PatronesDiseño.Data.FabricaConexion;
 using Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario;
 using Proyecto.ISW712.PatronesDiseño.Helpers;
+using Proyecto.ISW712.PatronesDiseño.Models;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -17,24 +18,60 @@ namespace Proyecto.ISW712.PatronesDiseño.Controllers
         public IActionResult Index()
         {
             var singleton = Singleton.Singleton.Instance;
-            //var conexion = new FabricaConexion(singleton.Motores_bd[singleton.Bd_actual], _configuration["ConnectionStrings:"+ singleton.Bd_actual]);
-            //var cone=conexion.CrearConexion();
-            // Console.WriteLine("La Conexion es:");
-            //Console.WriteLine(cone);
-            //Console.WriteLine(cone.GetType().GetProperty("ServerVersion").GetValue(cone));
-            // cone.Open();
-           //var usuarioFactory = new UsuarioHelper(singleton.Motores_bd[singleton.Bd_actual], _configuration["ConnectionStrings:" + singleton.Bd_actual]).GetUsuario();
             UsuarioHelper usuarioFactory = new UsuarioHelper(singleton.Motores_bd[singleton.Bd_actual], _configuration["ConnectionStrings:" + singleton.Bd_actual]);
-            usuarioFactory.AgregarUsuario();
-
-           // Console.WriteLine("//////////");
-           // Console.WriteLine(usuarioFactory[0].Nombre_Usuario);
-           // Console.WriteLine("//////////");
-            // Console.WriteLine(cone.GetType().GetProperty("ServerVersion").GetValue(cone));
-            // cone.Close();
+            //usuarioFactory.DeleteUsuario(5);
+            var ListUsu = usuarioFactory.GetUsuario();
+            //foreach (var usuario in x)
+            //{
+            //WriteLine(usuario.User_id);
+            //Console.WriteLine(usuario.Nombre_Usuario);
+            //Console.WriteLine(usuario.Edad);
+            //}
             Console.WriteLine(_configuration["ConnectionStrings:" + singleton.Bd_actual]);
-
-            return View();
+            ViewData["cadena1"] = singleton.Cadenas_conexion[singleton.Bd_actual];
+            return View(ListUsu);
         }
-    }
+        public IActionResult Eliminar(int id)
+        {
+            var singleton = Singleton.Singleton.Instance;
+            UsuarioHelper usuarioFactory = new UsuarioHelper(singleton.Motores_bd[singleton.Bd_actual], _configuration["ConnectionStrings:" + singleton.Bd_actual]);
+            //usuarioFactory.DeleteUsuario(5);
+            usuarioFactory.DeleteUsuario(id);
+            return RedirectToAction("Index");
+        }
+        public IActionResult AgregarView()
+        {
+            var singleton = Singleton.Singleton.Instance;
+            ViewData["cadena1"] = singleton.Cadenas_conexion[singleton.Bd_actual];
+            return View("Agregar");
+        }
+        public IActionResult Agregar(UsuarioModel usuario)
+        {
+            var singleton = Singleton.Singleton.Instance;
+            UsuarioHelper usuarioFactory = new UsuarioHelper(singleton.Motores_bd[singleton.Bd_actual], _configuration["ConnectionStrings:" + singleton.Bd_actual]);
+            usuarioFactory.AgregarUsuario(usuario);
+
+            return RedirectToAction("Index");
+        }
+        public IActionResult ModificarView(UsuarioModel usuario)
+        {
+            var singleton = Singleton.Singleton.Instance;
+            ViewData["cadena1"] = singleton.Cadenas_conexion[singleton.Bd_actual];
+            return View("ModificarView", usuario);
+        }
+        public IActionResult Modificar(UsuarioModel usuario)
+        {
+            var singleton = Singleton.Singleton.Instance;
+            UsuarioHelper usuarioFactory = new UsuarioHelper(singleton.Motores_bd[singleton.Bd_actual], _configuration["ConnectionStrings:" + singleton.Bd_actual]);
+            usuarioFactory.ModificarUsuario(usuario);
+            return RedirectToAction("Index");
+        }
+        public IActionResult DetalleView(UsuarioModel usuario)
+        {
+            var singleton = Singleton.Singleton.Instance;
+            ViewData["cadena1"] = singleton.Cadenas_conexion[singleton.Bd_actual];
+            return View("DetalleView",usuario);
+        }
+
+    } 
 }

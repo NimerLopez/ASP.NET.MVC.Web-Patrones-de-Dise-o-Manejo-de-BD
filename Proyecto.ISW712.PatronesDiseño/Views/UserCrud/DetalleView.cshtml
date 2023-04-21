@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model UsuarioModel
+<div class="card">
+    <div class="card-header">
+        <h3>Detalles del Usuario[@ViewData["cadena1"]]</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>ID:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.User_id</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Nombre de Usuario:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Nombre_Usuario</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Nombre Completo:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Nombre_Completo</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Edad:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Edad</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Correo Electrónico:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Correo</p>
+            </div>
+        </div>
+    </div>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</div>

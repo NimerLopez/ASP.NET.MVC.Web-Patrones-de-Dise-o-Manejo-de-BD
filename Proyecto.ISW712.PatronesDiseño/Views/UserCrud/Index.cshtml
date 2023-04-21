@@ -1,6 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<UsuarioModel>
+
+
 <div>
-    <h1>Hola</h1>
+    <h1>Lista de Usuarios[@ViewData["cadena1"]]</h1>
+    <a asp-action="AgregarView" class="btn btn-success text-white mb-3">Crear usuario</a>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre Usuario</th>
+                <th>Nombre Completo</th>
+                <th>Edad</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>@usuario.Nombre_Usuario</td>
+                    <td>@usuario.Nombre_Completo</td>
+                    <td>@usuario.Edad</td>
+                    <td>@usuario.Correo</td>
+                    <td>
+                        <a asp-action="Eliminar" asp-route-id="@usuario.User_id" class="btn btn-danger btn-sm">Eliminar</a>
+                        <a asp-action="ModificarView" asp-route-User_id="@usuario.User_id" asp-route-Nombre_Usuario="@usuario.Nombre_Usuario" asp-route-Nombre_Completo="@usuario.Nombre_Completo" asp-route-Edad="@usuario.Edad" asp-route-Correo="@usuario.Correo" class="btn btn-primary btn-sm">Modificar</a>
+                        <a asp-action="DetalleView" asp-route-User_id="@usuario.User_id" asp-route-Nombre_Usuario="@usuario.Nombre_Usuario" asp-route-Nombre_Completo="@usuario.Nombre_Completo" asp-route-Edad="@usuario.Edad" asp-route-Correo="@usuario.Correo" class="btn btn-warning btn-sm">Detalles</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

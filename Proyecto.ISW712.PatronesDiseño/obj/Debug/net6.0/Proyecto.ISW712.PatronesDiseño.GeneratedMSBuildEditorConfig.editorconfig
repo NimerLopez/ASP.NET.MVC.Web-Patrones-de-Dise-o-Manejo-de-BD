@@ -36,8 +36,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luZ2xldG9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Ingenieria en Software/Proyecto.ISW712.PatronesDiseño/Proyecto.ISW712.PatronesDiseño/Views/UserCrud/Agregar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckNydWRcQWdyZWdhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Ingenieria en Software/Proyecto.ISW712.PatronesDiseño/Proyecto.ISW712.PatronesDiseño/Views/UserCrud/DetalleView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckNydWRcRGV0YWxsZVZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Ingenieria en Software/Proyecto.ISW712.PatronesDiseño/Proyecto.ISW712.PatronesDiseño/Views/UserCrud/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckNydWRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Ingenieria en Software/Proyecto.ISW712.PatronesDiseño/Proyecto.ISW712.PatronesDiseño/Views/UserCrud/ModificarView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlckNydWRcTW9kaWZpY2FyVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Ingenieria en Software/Proyecto.ISW712.PatronesDiseño/Proyecto.ISW712.PatronesDiseño/Views/_ViewImports.cshtml]

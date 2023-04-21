@@ -27,9 +27,18 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
             cmd.ExecuteNonQuery();
         }
 
-        public  void ActualizarUsuario(int id)
+        public  void ActualizarUsuario(UsuarioModel usuario)
         {
-            // Implementación específica de MySQL para actualizar un usuario
+            Console.WriteLine("Modi");
+            SqlCommand cmd = new SqlCommand("UPDATE Usuarios SET Edad=@edad, Nombre_Usuario=@nombreUsuario, Nombre_Completo=@nombreCompleto, Correo=@correo WHERE User_id=@userId", (SqlConnection)conexion);
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Parameters.AddWithValue("@edad", usuario.Edad);
+            cmd.Parameters.AddWithValue("@nombreUsuario", usuario.Nombre_Usuario);
+            cmd.Parameters.AddWithValue("@nombreCompleto", usuario.Nombre_Completo);
+            cmd.Parameters.AddWithValue("@correo", usuario.Correo);
+            cmd.Parameters.AddWithValue("@userId", usuario.User_id);
+            int rowsAffected = cmd.ExecuteNonQuery();
+            Console.WriteLine("{0} fila(s) afectadas", rowsAffected);
         }
 
         public  void EliminarUsuario(int id)
