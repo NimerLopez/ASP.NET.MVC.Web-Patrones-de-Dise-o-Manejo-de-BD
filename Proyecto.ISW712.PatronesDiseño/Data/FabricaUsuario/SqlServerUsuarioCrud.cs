@@ -19,7 +19,7 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
 
         public  void CrearUsuario(UsuarioModel usuario)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Usuarios (Nombre_Usuario, Nombre_Completo, Edad, Correo) VALUES (@Nombre_Usuario, @Nombre_Completo, @Edad, @Correo)", (SqlConnection)conexion);
+            SqlCommand cmd = new SqlCommand("Exec AgregarUsuario @Nombre_Usuario, @Nombre_Completo, @Edad, @Correo", (SqlConnection)conexion);
             cmd.Parameters.AddWithValue("@Nombre_Usuario", usuario.Nombre_Usuario);
             cmd.Parameters.AddWithValue("@Nombre_Completo", usuario.Nombre_Completo);
             cmd.Parameters.AddWithValue("@Edad", usuario.Edad);

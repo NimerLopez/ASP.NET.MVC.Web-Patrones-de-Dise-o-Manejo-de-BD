@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RolModel
+<div class="card">
+    <div class="card-header">
+        <h3>Detalles del Usuario[@ViewData["cadena1"]]</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>ID:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Id_Rol</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Nombre de Rol:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Nombre</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Descripcion:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Descripcion</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Estado:</h5>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Estado</p>
+            </div>
+        </div>
+    </div>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</div>
