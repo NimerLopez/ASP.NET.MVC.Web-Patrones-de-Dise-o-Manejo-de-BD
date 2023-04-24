@@ -25,10 +25,10 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaRol
                 //conexion = new SqlServerConexion(_motor, _cadenaConexion).Conectar();
                 //Console.WriteLine(conexion.ToString());
                 case "PgSql":
-                    //return new PostgresUsuarioCrud(_Conexion);
+                    return new PostgresRolCrud(_Conexion);
                 //conexion = new PostgresConexion(_motor, _cadenaConexion).Conectar();
                 case "MySql":
-                    //return new MySqlUsuarioCrud(_Conexion);
+                    return new MySqlRolCrud(_Conexion);
                 default:
                     throw new NotSupportedException(string.Format("El motor de base de datos '{0}' no es soportado.", _motor));
             }

@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
 {
-    public class PostgresUsuarioCrud:IUsuarioCruds
+    public class PostgresUsuarioCrud : IUsuarioCruds
     {
         public IDbConnection conexion;
         public PostgresUsuarioCrud(IDbConnection conexion)

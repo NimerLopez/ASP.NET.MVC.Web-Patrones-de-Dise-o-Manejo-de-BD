@@ -30,7 +30,7 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
         public  void ActualizarUsuario(UsuarioModel usuario)
         {
             Console.WriteLine("Modi");
-            SqlCommand cmd = new SqlCommand("UPDATE Usuarios SET Edad=@edad, Nombre_Usuario=@nombreUsuario, Nombre_Completo=@nombreCompleto, Correo=@correo WHERE User_id=@userId", (SqlConnection)conexion);
+            SqlCommand cmd = new SqlCommand("Exec ActualizarUsuario @edad, @nombreUsuario, @nombreCompleto, @correo, @userId", (SqlConnection)conexion);
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.Parameters.AddWithValue("@edad", usuario.Edad);
             cmd.Parameters.AddWithValue("@nombreUsuario", usuario.Nombre_Usuario);
@@ -44,7 +44,7 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
         public  void EliminarUsuario(int id)
         {
             Console.WriteLine(id);
-            SqlCommand cmd = new SqlCommand("DELETE FROM Usuarios WHERE User_id = @id", (SqlConnection)conexion);
+            SqlCommand cmd = new SqlCommand("EliminarUsuarioPorId @id", (SqlConnection)conexion);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.ExecuteNonQuery();
         }
