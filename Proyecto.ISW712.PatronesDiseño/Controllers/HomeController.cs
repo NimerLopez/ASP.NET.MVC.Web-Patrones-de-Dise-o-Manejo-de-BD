@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proyecto.ISW712.PatronesDiseño.Models;
+using Proyecto.ISW712.PatronesDiseño.Singleton;
 using System.Diagnostics;
 
 namespace Proyecto.ISW712.PatronesDiseño.Controllers
@@ -14,7 +15,10 @@ namespace Proyecto.ISW712.PatronesDiseño.Controllers
         }
 
         public IActionResult Index()
-        {               
+        {
+            var singleton = Singleton.Singleton.Instance;
+            ViewData["CadenaConexion"] = singleton.Cadenas_conexion[singleton.Bd_actual];
+            ViewData["MotorBD"] = singleton.Motores_bd[singleton.Bd_actual];
             return View();
         }
 
