@@ -1,5 +1,4 @@
-﻿using Proyecto.ISW712.PatronesDiseño.Data.FabricaConexion;
-using Proyecto.ISW712.PatronesDiseño.Models;
+﻿using Proyecto.ISW712.PatronesDiseño.Models;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -24,11 +23,9 @@ namespace Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario
             {
                 case "MSSql":                 
                         return new SqlServerUsuarioCrud(_Conexion);                   
-                    //conexion = new SqlServerConexion(_motor, _cadenaConexion).Conectar();
-                    //Console.WriteLine(conexion.ToString());
+
                 case "PgSql":
                     return new PostgresUsuarioCrud(_Conexion);
-                    //conexion = new PostgresConexion(_motor, _cadenaConexion).Conectar();
                 case "MySql":
                     return new MySqlUsuarioCrud(_Conexion);                   
                 default:

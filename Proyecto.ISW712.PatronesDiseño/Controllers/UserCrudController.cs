@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Proyecto.ISW712.PatronesDiseño.Data.FabricaConexion;
 using Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario;
 using Proyecto.ISW712.PatronesDiseño.Helpers;
 using Proyecto.ISW712.PatronesDiseño.Models;

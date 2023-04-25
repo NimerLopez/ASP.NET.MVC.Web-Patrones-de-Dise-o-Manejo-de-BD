@@ -1,4 +1,4 @@
-﻿using Proyecto.ISW712.PatronesDiseño.Data.FabricaConexion;
+﻿using Proyecto.ISW712.PatronesDiseño.Conexion;
 using Proyecto.ISW712.PatronesDiseño.Data.FabricaUsuario;
 using Proyecto.ISW712.PatronesDiseño.Models;
 using System.Data;
@@ -21,9 +21,8 @@ namespace Proyecto.ISW712.PatronesDiseño.Helpers
 
         private  void ObtenerConexion()//genera y crea la conexion y la abre
         {
-            FabricaConexion fabricaConexion = new FabricaConexion(motor, cadenaConexion);//genera la conexion
+            FabricaConexion fabricaConexion = new FabricaConexion(motor, cadenaConexion,"C");//genera la conexion abierta,C de CONECTAR
             this.conexion = fabricaConexion.CrearConexion();//crea la conexion
-            conexion.Open();//abre la conexion
             Console.WriteLine("Abriendo");     
         }
 
@@ -65,10 +64,11 @@ namespace Proyecto.ISW712.PatronesDiseño.Helpers
 
 
         private void CerrarConexion()//cerrar conexion
-        {        
-                Console.WriteLine("Cerrando");
-                this.conexion.Close();//cierra la conexion
-                Console.WriteLine(this.conexion);
+        {
+            FabricaConexion fabricaConexion = new FabricaConexion(motor, cadenaConexion, "D");//genera la conexion abierta,D de Desconectar
+            this.conexion = fabricaConexion.CrearConexion();//Devulve la Conexion Cerrada
+            Console.WriteLine("Cerrando");
+
         }
     }
 }

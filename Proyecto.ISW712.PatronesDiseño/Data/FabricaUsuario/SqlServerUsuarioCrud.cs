@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using Proyecto.ISW712.PatronesDiseño.Data.FabricaConexion;
 using Proyecto.ISW712.PatronesDiseño.Models;
 using System.Data;
 using System.Data.SqlClient;
